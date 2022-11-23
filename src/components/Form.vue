@@ -27,7 +27,9 @@ const submit = () => {
     const answer = ''
     console.log(form.questions)
     form.questions.forEach(question => {
-        answer += question.label + '\n' + question.answer + '\n\n'
+        if (question.answer) {
+            answer += question.label + '\n' + question.answer + '\n\n'
+        }
     })
 
     liff
