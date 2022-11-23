@@ -24,12 +24,17 @@ onMounted(() => {
 })
 
 const submit = () => {
+    const answer = ''
     console.log(form.questions)
+    form.questions.forEach(question => {
+        answer += question.label + '\n' + question.answer + '\n\n'
+    })
+
     liff
     .sendMessages([
     {
       type: "text",
-      text: "Hello, World!",
+      text: answer,
     },
   ])
   .then(() => {
