@@ -17,9 +17,9 @@ import FormText from '@/components/FormText.vue'
 import FormCheckboxRadio from '@/components/FormCheckboxRadio.vue'
 import FormSelectbox from '@/components/FormSelectbox.vue'
 
-//liff.init({
-//    liffId: '1657367036-Y9qj9ENd',
-//});
+liff.init({
+    liffId: '1657367036-Y9qj9ENd',
+});
 
 const submit = () => {
     console.log(form.questions)
