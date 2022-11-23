@@ -11,15 +11,17 @@
 </template>
 
 <script setup>
-import { ref, toRefs, computed, reactive } from 'vue'
+import { ref, toRefs, computed, reactive, onMounted } from 'vue'
 import liff from '@line/liff';
 import FormText from '@/components/FormText.vue'
 import FormCheckboxRadio from '@/components/FormCheckboxRadio.vue'
 import FormSelectbox from '@/components/FormSelectbox.vue'
 
-liff.init({
-    liffId: '1657367036-Y9qj9ENd',
-});
+onMounted(() => {
+    liff.init({
+        liffId: '1657367036-Y9qj9ENd',
+    });
+})
 
 const submit = () => {
     console.log(form.questions)
