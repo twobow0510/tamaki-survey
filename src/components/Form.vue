@@ -27,7 +27,8 @@ const submit = () => {
     let answer = ''
     console.log(form.questions)
     form.questions.forEach(question => {
-        if (question.answer && question.answer.length > 0) {
+        if (question.type === 'checkbox' && question.answer.length > 0 
+            || question.type !== 'checkbox' && question.answer) {
             answer += question.label + '\n' + question.answer + '\n\n'
         }
     })
