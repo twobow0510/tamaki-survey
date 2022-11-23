@@ -24,7 +24,7 @@ onMounted(() => {
 })
 
 const submit = () => {
-    const answer = ''
+    let answer = ''
     console.log(form.questions)
     form.questions.forEach(question => {
         if (question.answer) {
