@@ -27,7 +27,7 @@ const submit = () => {
     let answer = ''
     console.log(form.questions)
     form.questions.forEach(question => {
-        if (question.answer) {
+        if (question.answer && question.answer.length > 0) {
             answer += question.label + '\n' + question.answer + '\n\n'
         }
     })
@@ -40,7 +40,8 @@ const submit = () => {
     },
   ])
   .then(() => {
-    console.log("message sent");
+    console.log("message sent")
+    liff.closeWindow()
   })
   .catch((err) => {
     console.log("error", err);
