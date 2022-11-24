@@ -1,9 +1,12 @@
 <template>
     <form @submit.prevent="submit" class="text-left space-y-8">
         <div v-for="(question, index) in map_questions" :key="question.id">
-            <form-text v-if="question.type == 'text'" :question="question" />        
-            <form-checkbox-radio v-else-if="question.type == 'radio' || question.type == 'checkbox'" :question="question" />
-            <form-selectbox v-else-if="question.type == 'selectbox'" :question="question" />
+            <form-text v-if="question.type == 'text'"
+                :question="question" :qIndex="index" @changeValue="update" />
+            <form-checkbox-radio v-else-if="question.type == 'radio' || question.type == 'checkbox'"
+                :question="question" :qIndex="index" @changeValue="update" />
+            <form-selectbox v-else-if="question.type == 'selectbox'"
+                :question="question" :qIndex="index" @changeValue="update" />
         </div>
         <button class="">送信する</button>
     </form>
@@ -18,10 +21,15 @@ import FormCheckboxRadio from '@/components/FormCheckboxRadio.vue'
 import FormSelectbox from '@/components/FormSelectbox.vue'
 
 onMounted(() => {
-    liff.init({
-        liffId: '1657367036-Y9qj9ENd',
-    });
+    //liff.init({
+    //    liffId: '1657367036-Y9qj9ENd',
+    //});
+    console.log(map_questions.value)
 })
+
+const update = (arg) => {
+    console.log(arg)
+}
 
 const submit = () => {
     let answer = ''
@@ -49,7 +57,7 @@ const submit = () => {
   });
 }
 
-const questions = [
+const questions = ref([
     {
         id: 1,
         type: 'radio',
@@ -358,10 +366,10 @@ const questions = [
         required: true,
     },
 
-]
+])
 
 const map_questions = computed(() => {
-    return questions.map(question => {
+    return questions.value.map(question => {
         question['answer'] = question.type === 'checkbox' ? []: ''
         return question
     })

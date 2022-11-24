@@ -1,6 +1,7 @@
 <template>
     <div class="mb-2">{{ question.label }}</div>
-    <select v-model="question.answer">
+    <select :name="`question${question.id}`" v-model="question.answer"
+        @change="$emit('change-value', { val:$event.target.value, index:qIndex})">
         <option value="">選択して下さい</option>
         <option v-for="(option, index) in question.options" :key="index"
             :value="option.label"
@@ -13,6 +14,12 @@ import { toRefs } from 'vue'
 
 const props = defineProps({
     question: Object,
+    qIndex: Number,
 })
-const { question } = toRefs(props)
+
+const { question, qIndex } = toRefs(props)
+
+const emit = defineEmits([
+    'change-value'
+])
 </script>
