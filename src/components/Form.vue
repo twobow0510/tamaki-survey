@@ -1,16 +1,20 @@
 <template>
-    <form @submit.prevent="submit" class="text-left space-y-8">
-        <div v-for="(question, index) in map_questions" :key="question.id">
-            <form-text v-if="question.type == 'text'"
-                :question="question" :qIndex="index" @changeValue="update" />
-            <form-checkbox-radio v-else-if="question.type == 'radio' || question.type == 'checkbox'"
-                :question="question" :qIndex="index" @changeValue="update" />
-            <form-selectbox v-else-if="question.type == 'selectbox'"
-                :question="question" :qIndex="index" @changeValue="update" />
-        </div>
-        <button class="">送信する</button>
-    </form>
-
+    <div class="p-4">
+        <div class="mb-6 text-lg">問診票</div>
+        <form @submit.prevent="submit" class="text-left space-y-8 text-slate-600">
+            <div v-for="(question, index) in map_questions" :key="question.id">
+                <form-text v-if="question.type == 'text'"
+                    :question="question" :qIndex="index" @changeValue="update" />
+                <form-checkbox-radio v-else-if="question.type == 'radio' || question.type == 'checkbox'"
+                    :question="question" :qIndex="index" @changeValue="update" />
+                <form-selectbox v-else-if="question.type == 'selectbox'"
+                    :question="question" :qIndex="index" @changeValue="update" />
+            </div>
+            <div class="flex justify-center">
+                <button class="rounded text-white bg-indigo-500 p-2">送信する</button>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script setup>

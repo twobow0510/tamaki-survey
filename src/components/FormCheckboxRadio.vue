@@ -1,13 +1,13 @@
 <template>
     <div class="mb-2">{{ question.label }}</div>
-    <div class="flex space-x-4 flex-wrap">
-        <div v-for="(option, index) in question.options" :key="index">
+    <div class="flex flex-rows flex-wrap items-center text-sm">
+        <div v-for="(option, index) in question.options" :key="index" class="mr-4 mb-2">
             <input :type="question.type" :value="option.label" :name="`question${question.id}`"
+                class="border border-gray-200"
                 v-model="question.answer" @change="$emit('change-value', { val:$event.target.value, index:qIndex})">
             <label class="ml-2">{{ option.label }}</label>
         </div>
     </div>
-    <div>{{ question.answer }}</div>
 </template>
 
 <script setup>
