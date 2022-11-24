@@ -21,9 +21,9 @@ import FormCheckboxRadio from '@/components/FormCheckboxRadio.vue'
 import FormSelectbox from '@/components/FormSelectbox.vue'
 
 onMounted(() => {
-    //liff.init({
-    //    liffId: '1657367036-Y9qj9ENd',
-    //});
+    liff.init({
+        liffId: '1657367036-Y9qj9ENd',
+    });
     console.log(map_questions.value)
 })
 
