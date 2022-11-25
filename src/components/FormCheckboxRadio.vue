@@ -35,20 +35,21 @@ const extraQuestion = reactive({
 })
 
 const checkExtra = (index) => {
-    //console.log(question.value.options.length - 1, index)
-    if (question.value.options.length - 1 == index) {
-        if (question.value.answer.length > 0) {
-            question.value.answer = []
-            question.value.answer.push('その他')
+    if (question.value.type === 'checkbox') {
+        if (question.value.options.length - 1 == index) {
+            if (question.value.answer.length > 0) {
+                question.value.answer = []
+                question.value.answer.push('その他')
+            }
+        } else {
+            if (question.value.answer.indexOf('その他') !== -1) {
+                console.log(question.value.answer, question.value.answer.indexOf('その他'))
+                question.value.answer = []
+                question.value.answer.push(question.value.options[index].label)
+            }
         }
-    } else {
-        if (question.value.answer.indexOf('その他') !== -1) {
-            console.log(question.value.answer, question.value.answer.indexOf('その他'))
-            question.value.answer = []
-            question.value.answer.push(question.value.options[index].label)
-        }
+        extraQuestion.isDisable = question.value.answer.indexOf('その他') !== -1 ? false: true
     }
-    extraQuestion.isDisable = question.value.answer.indexOf('その他') !== -1 ? false: true
 }
 
 const update = (value) => {
