@@ -53,7 +53,7 @@ const checkExtra = (index) => {
 
 const update = (value) => {
     console.log(value)
-    question.value.answer = []
+    //question.value.answer = []
     question.value.answer.push(value)
     //question.value.answer.push(extraQuestion.answer)
 }
