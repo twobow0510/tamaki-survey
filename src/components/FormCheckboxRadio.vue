@@ -7,8 +7,9 @@
                 v-model="question.answer" @change="checkExtra(index)">
             <label class="ml-2">{{ option.label }}</label>
         </div>
-        <form-text v-if="question.hasOther" :question="extraQuestion" />
+        <form-text v-if="question.hasOther" :question="extraQuestion" @change-value="update" />
     </div>
+    <!--<div>{{ question.answer }}</div>-->
 </template>
 
 <script setup>
@@ -48,6 +49,13 @@ const checkExtra = (index) => {
         }
     }
     extraQuestion.isDisable = question.value.answer.indexOf('その他') !== -1 ? false: true
+}
+
+const update = (value) => {
+    console.log(value)
+    question.value.answer = []
+    question.value.answer.push(value)
+    //question.value.answer.push(extraQuestion.answer)
 }
 
 //const emit = defineEmits([

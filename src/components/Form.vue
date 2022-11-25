@@ -26,11 +26,11 @@ import FormSelectbox from '@/components/FormSelectbox.vue'
 import data from '../assets/data.json'
 
 onMounted(() => {
-    //liff.init({
-    //    liffId: '1657367036-Y9qj9ENd',
-    //});
-    console.log(data)
-    console.log(map_questions.value)
+    liff.init({
+        liffId: '1657367036-Y9qj9ENd',
+    });
+    //console.log(data)
+    //console.log(map_questions.value)
 })
 
 //const update = (arg) => {
