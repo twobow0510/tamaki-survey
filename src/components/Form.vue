@@ -33,11 +33,16 @@ onMounted(() => {
     //console.log(map_questions.value)
 })
 
+const emits = defineEmits([
+    'update'
+])
+
 //const update = (arg) => {
 //    console.log(arg)
 //}
 
 const submit = () => {
+    emits('update')
     let answer = ''
     console.log(form.questions)
     form.questions.forEach(question => {
